@@ -29,6 +29,16 @@ namespace PECD.Analysis
             }
         }
 
+        public static string PrepareArgument()
+        {
+            string path = "qEGzExmxoFESU.csv";
+            File.WriteAllText(path, "", Encoding.Unicode);
+            return path;
+        }
+
+        public AnalyseCSV() : this(PrepareArgument()) { }
+        
+
         public void AddNewClassroom(string data)
         {
             string s = "-;-;-;-;-;-;-";

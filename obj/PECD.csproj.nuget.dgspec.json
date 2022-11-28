@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\isupo\\YandexDisk\\Programming\\C#\\PECD\\PECD\\PECD.csproj": {}
+    "C:\\Users\\isupo\\YandexDisk\\Programming\\C#\\PECD\\PECD.csproj": {}
   },
   "projects": {
-    "C:\\Users\\isupo\\YandexDisk\\Programming\\C#\\PECD\\PECD\\PECD.csproj": {
+    "C:\\Users\\isupo\\YandexDisk\\Programming\\C#\\PECD\\PECD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\isupo\\YandexDisk\\Programming\\C#\\PECD\\PECD\\PECD.csproj",
+        "projectUniqueName": "C:\\Users\\isupo\\YandexDisk\\Programming\\C#\\PECD\\PECD.csproj",
         "projectName": "PECD",
-        "projectPath": "C:\\Users\\isupo\\YandexDisk\\Programming\\C#\\PECD\\PECD\\PECD.csproj",
+        "projectPath": "C:\\Users\\isupo\\YandexDisk\\Programming\\C#\\PECD\\PECD.csproj",
         "packagesPath": "C:\\Users\\isupo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\isupo\\YandexDisk\\Programming\\C#\\PECD\\PECD\\obj\\",
+        "outputPath": "C:\\Users\\isupo\\YandexDisk\\Programming\\C#\\PECD\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\isupo\\AppData\\Roaming\\NuGet\\NuGet.Config",

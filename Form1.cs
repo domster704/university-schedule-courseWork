@@ -11,6 +11,7 @@ namespace PECD
         public Form1()
         {
             InitializeComponent();
+            analyseCSV = new AnalyseCSV();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -105,8 +106,6 @@ namespace PECD
             int row = e.RowIndex % analyseCSV.classrooms[0].lessonsCount;
             int column = e.ColumnIndex - 2;
             analyseCSV.classrooms[rowInClass].originViewOfTimetable[column][row] = value;
-            /*richTextBox1.AppendText(row + " " + column + " ");
-            richTextBox1.AppendText(analyseCSV.classrooms[rowInClass].originViewOfTimetable[row][column] + "\n");*/
         }
     }
 }
