@@ -1,4 +1,5 @@
 using System.Data;
+using System.Data.Common;
 using System.Windows.Forms;
 using PECD.Analysis;
 
@@ -6,7 +7,7 @@ namespace PECD
 {
     public partial class Form1 : Form
     {
-        private AnalyseCSV analyseCSV;
+        public static AnalyseCSV analyseCSV;
         public Form1()
         {
             InitializeComponent();
@@ -18,7 +19,7 @@ namespace PECD
                 return;
             DataGridViewCell cell = dataGridView1[e.ColumnIndex, e.RowIndex];
 
-            string message = analyseCSV.classrooms[e.RowIndex / analyseCSV.classrooms[0].lessonsCount].ToString();
+            string message = analyseCSV.classrooms[e.RowIndex / analyseCSV.classrooms[0].lessonsCount].GetData();
             MessageBox.Show(message, "Характеристики", MessageBoxButtons.OK);            
         }
 
@@ -33,6 +34,13 @@ namespace PECD
                 analyseCSV = new AnalyseCSV(path);
                 dataGridView1.DataSource = analyseCSV.toDataTable();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form2 form = new();
+            form.ShowDialog();
+            dataGridView1.DataSource = analyseCSV.toDataTable();
         }
 
         int GetNumberOfActionWithCell(int column, int row)
@@ -60,6 +68,12 @@ namespace PECD
             if (e.RowIndex == -1 || e.ColumnIndex != 0)
                 return;
 
+            if (e.RowIndex != -1 && e.ColumnIndex != -1 && e.ColumnIndex < 2)
+            {
+                DataGridViewCell cell = dataGridView1[e.ColumnIndex, e.RowIndex];
+                cell.ReadOnly = true;
+            }
+
             e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
             int res = GetNumberOfActionWithCell(e.ColumnIndex, e.RowIndex);
             if (res == 0)
@@ -70,6 +84,29 @@ namespace PECD
             {
                 e.AdvancedBorderStyle.Bottom = dataGridView1.AdvancedCellBorderStyle.Bottom;
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dialog = new();
+            dialog.Filter = "Text files | *.csv";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                analyseCSV.ExportToCSV(dialog.FileName);
+            }
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewCell cell = dataGridView1[e.ColumnIndex, e.RowIndex];
+            string value = cell.Value.ToString() == null || cell.Value.ToString() == "" ? "-" : cell.Value.ToString();
+            cell.Value = value;
+            int rowInClass = e.RowIndex / analyseCSV.classrooms[0].lessonsCount;
+            int row = e.RowIndex % analyseCSV.classrooms[0].lessonsCount;
+            int column = e.ColumnIndex - 2;
+            analyseCSV.classrooms[rowInClass].originViewOfTimetable[column][row] = value;
+            /*richTextBox1.AppendText(row + " " + column + " ");
+            richTextBox1.AppendText(analyseCSV.classrooms[rowInClass].originViewOfTimetable[row][column] + "\n");*/
         }
     }
 }

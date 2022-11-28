@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PECD.Analysis
 {
-    internal class AnalyseCSV
+    public class AnalyseCSV
     {
         public List<ClassroomData> classrooms;
         public AnalyseCSV(string path)
@@ -27,6 +27,12 @@ namespace PECD.Analysis
                     classrooms.Add(new ClassroomData(line));
                 }
             }
+        }
+
+        public void AddNewClassroom(string data)
+        {
+            string s = "-;-;-;-;-;-;-";
+            classrooms.Add(new ClassroomData(String.Format("{0},{1}:{1}:{1}:{1}:{1}:{1}", data, s)));
         }
 
         private string[] columnNames = new string[]
@@ -61,6 +67,15 @@ namespace PECD.Analysis
                 }
             }
             return dt;
+        }
+
+        public void ExportToCSV(string path) 
+        {
+            File.WriteAllText(path, "Аудитория,Этаж,Корпус,Количество,Проектор,Розетки,Расписание\n", Encoding.Unicode);
+            foreach (ClassroomData i in classrooms)
+            {
+                File.AppendAllText(path, i.ToString() + "\n", Encoding.Unicode);
+            }
         }
     }
 }

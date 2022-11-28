@@ -15,3 +15,4 @@ C:\Users\isupo\YandexDisk\Programming\C#\PECD\PECD\obj\Debug\net6.0-windows\refi
 C:\Users\isupo\YandexDisk\Programming\C#\PECD\PECD\obj\Debug\net6.0-windows\PECD.pdb
 C:\Users\isupo\YandexDisk\Programming\C#\PECD\PECD\obj\Debug\net6.0-windows\PECD.genruntimeconfig.cache
 C:\Users\isupo\YandexDisk\Programming\C#\PECD\PECD\obj\Debug\net6.0-windows\ref\PECD.dll
+C:\Users\isupo\YandexDisk\Programming\C#\PECD\PECD\obj\Debug\net6.0-windows\PECD.Form2.resources
